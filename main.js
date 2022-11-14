@@ -79,7 +79,7 @@ var display = {
     document.getElementById("scoreBot").innerHTML = game.score;
     document.getElementById("scorePS").innerHTML = game.getScorePS();
     document.getElementById("nextSc").innerHTML = game.nextSc;
-    document.title = game.score + " $ - Tank Clicker™";
+    document.title = " $ - Tank Clicker™";
   },
 
   updateShop: function() {
@@ -117,7 +117,8 @@ function saveGame() {
     buildingCount: building.count,
     buildingIncome: building.income,
     buildingCost: building.cost,
-    upgradePurchased: upgrade.purchased
+    upgradePurchased: upgrade.purchased,
+    lvl: game.lvl
   };
   localStorage.setItem("gameSave", JSON.stringify(gameSave));
 };
@@ -130,6 +131,7 @@ function loadGame() {
     if (typeof savedGame.totalClicks !== "undefined") game.totalClicks = savedGame.totalClicks;
     if (typeof savedGame.clickValue !== "undefined") game.clickValue = savedGame.clickValue;
     if (typeof savedGame.version !== "undefined") game.version = savedGame.version;
+    if (typeof savedGame.lvl !== "undefined") game.lvl = savedGame.lvl;
     if (typeof savedGame.buildingCount !== "undefined") {
       for (i = 0; i < savedGame.buildingCount.length; i++)
         building.count[i] = savedGame.buildingCount[i];
@@ -147,6 +149,7 @@ function loadGame() {
         upgrade.purchased[i] = savedGame.upgradePurchased[i];
     }
   }
+  LoadLvl();
 };
 
 function resetGame() {
@@ -156,25 +159,60 @@ function resetGame() {
     location.reload();
   }
 };
-function NextGame() {
+function NextLevel() {
   if (game.score >= game.nextSc) {
-    switch (lvl) {
+    switch (game.lvl) {
       case 1:
-        document.body.style.backgroundImage = "url('images/bg.png')"
+        document.body.style.backgroundImage = "url('images/bg1.png')"
+        game.nextSc = 100000000000
+        document.getElementById("clicker").src = "images/tank1.png";
+        game.lvl = 2
         break;
       case 2:
-        document.body.style.backgroundImage = "url('images/bg1.png')"
+        document.body.style.backgroundImage = "url('images/bg2.png')"
+        game.nextSc = 10000000000000
+        game.lvl = 3
         break;
       case 3:
-        document.body.style.backgroundImage = "url('images/bg2.png')"
+        document.body.style.backgroundImage = "url('images/bg3.png')"
+        game.nextSc = 100000000000000
+        game.lvl = 4
         break;
       case 4:
-        document.body.style.backgroundImage = "url('images/bg3.png')"
-        break;
-      case 5:
         document.body.style.backgroundImage = "url('images/bg4.png')"
+        game.nextSc = 1000000000000000
+        game.lvl = 5
         break;
     }
+  }
+};
+
+function LoadLvl() {
+  switch (game.lvl) {
+    case 1:
+      document.body.style.backgroundImage = "url('images/bg.png')"
+      break;
+    case 2:
+      document.body.style.backgroundImage = "url('images/bg1.png')"
+      game.nextSc = 100000000000
+      document.getElementById("clicker").src = "images/tank1.png";
+      break;
+    case 3:
+      document.body.style.backgroundImage = "url('images/bg2.png')"
+      game.nextSc = 10000000000000
+      break;
+    case 4:
+      document.body.style.backgroundImage = "url('images/bg3.png')"
+      game.nextSc = 100000000000000
+      break;
+    case 5:
+      document.body.style.backgroundImage = "url('images/bg4.png')"
+      game.nextSc = 1000000000000000
+      document.getElementById("nextSc").style.display = "none";
+      break;
+    default:
+      document.body.style.backgroundImage = "url('images/bg0.png')"
+      break;
   }
 };
 
