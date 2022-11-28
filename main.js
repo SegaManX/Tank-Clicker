@@ -79,7 +79,7 @@ var display = {
     document.getElementById("scoreBot").innerHTML = game.score;
     document.getElementById("scorePS").innerHTML = game.getScorePS();
     document.getElementById("nextSc").innerHTML = game.nextSc;
-    document.title = " $ - Tank Clicker™";
+    document.title = game.score + " $ - Tank Clicker™";
   },
 
   updateShop: function() {
