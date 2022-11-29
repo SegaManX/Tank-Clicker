@@ -19,7 +19,7 @@
 
 .clickerContainer img{
 	position:relative;
-	trasition: all .2s ease-in-out;
+	transition: all .2s ease-in-out;
 }
 .clickerContainer img:hover {transform: scale(1.1);}
 .clickerContainer img:active {transform: scale(0.96);}
