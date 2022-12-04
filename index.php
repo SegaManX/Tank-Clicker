@@ -16,7 +16,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   {
     $_SESSION['login_user'] = $myusername;
     header("location: game.php");
-
   }
   else if(!$admin)
   {
@@ -39,6 +38,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     body {
       font-family:Arial, Helvetica, sans-serif;
       font-size:14px;
+      background: url('images/bg.png') no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      margin: 0;
+     
     }
     label {
       font-weight:bold;
@@ -48,13 +54,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     .box {
       border:#666666 solid 1px;
     }
+    .vcenter{
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+   
+
   </style>
 </head>
 
-<body bgcolor = "#FFFFFF">
+<body>
 	
-      <div align = "center">
-         <div style = "width:300px; border: solid 1px #333333; " align = "left">
+      <div align="center" class="vcenter">
+         <div style = "width:300px; border: solid 1px #333333; background-color:#666666;" align = "left">
             <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Login</b></div>
 				
             <div style = "margin:30px">
