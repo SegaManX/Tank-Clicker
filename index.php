@@ -19,7 +19,6 @@
         <img src="images/tank.png" height="500px" width="600px" id="clicker" class="unselectable">
 				</div>
 			</center>
-			
 			<div class=" sectionFooter">
         <h5>Tank Clicker™</h5>
         <button onclick=" saveGame()">Save Game</button>
