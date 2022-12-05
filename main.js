@@ -200,15 +200,18 @@ function LoadLvl() {
     case 3:
       document.body.style.backgroundImage = "url('images/bg2.png')"
       game.nextSc = 10000000000000
+      document.getElementById("clicker").src = "images/tank2.png";
       break;
     case 4:
       document.body.style.backgroundImage = "url('images/bg3.png')"
       game.nextSc = 100000000000000
+      document.getElementById("clicker").src = "images/tank3.png";
       break;
     case 5:
       document.body.style.backgroundImage = "url('images/bg4.png')"
       game.nextSc = 1000000000000000
       document.getElementById("nextSc").style.display = "none";
+      document.getElementById("clicker").src = "images/tank4.png";
       break;
     default:
       document.body.style.backgroundImage = "url('images/bg0.png')"
