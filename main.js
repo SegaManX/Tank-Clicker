@@ -160,30 +160,9 @@ function resetGame() {
   }
 };
 function NextLevel() {
-  if (game.score >= game.nextSc) {
-    switch (game.lvl) {
-      case 1:
-        document.body.style.backgroundImage = "url('images/bg1.png')"
-        game.nextSc = 100000000000
-        document.getElementById("clicker").src = "images/tank1.png";
-        game.lvl = 2
-        break;
-      case 2:
-        document.body.style.backgroundImage = "url('images/bg2.png')"
-        game.nextSc = 10000000000000
-        game.lvl = 3
-        break;
-      case 3:
-        document.body.style.backgroundImage = "url('images/bg3.png')"
-        game.nextSc = 100000000000000
-        game.lvl = 4
-        break;
-      case 4:
-        document.body.style.backgroundImage = "url('images/bg4.png')"
-        game.nextSc = 1000000000000000
-        game.lvl = 5
-        break;
-    }
+  if (game.score >= game.nextSc && game.lvl <5) {
+    game.lvl +=1;
+    LoadLvl();
   }
 };
 
