@@ -17,22 +17,24 @@
       <br>
       <div class="clickerContainer unselectable">
         <img src="images/tank.png" height="500px" width="600px" id="clicker" class="unselectable">
-				</div>
-			</center>
-			<div class=" sectionFooter">
-        <h5>Tank Clicker™</h5>
-        <button onclick=" saveGame()">Save Game</button>
-        <button onclick="resetGame()">Reset Game</button>
-        <button onclick="help()">Help</button>
-      </div>
-      <div class="NextLvl">
-        <button onclick="NextLevel()">Next Level</button> <span id="scoreBot">0</span> / <span id="nextSc">0</span>
-      </div>
+			</div>
+		</center>
   </div>
 
   <div class="sectionRight">
     <div id="upgradeContainer"></div>
     <div id="shopContainer"></div>
+  </div>
+  
+	<div class="sectionFooter">
+    <h1>Tank Clicker™</h1>
+    <button onclick=" saveGame()">Save Game</button>
+    <button onclick="resetGame()">Reset Game</button>
+    <button onclick="help()">Help</button>
+    <button onclick="NextLevel()">Next Level</button> 
+    <span class="scoreKeeper">
+      <span id="scoreBot">0</span> <span>/</span> <span id="nextSc">0</span>
+    </span>
   </div>
   <script src="main.js"></script>
 </body>

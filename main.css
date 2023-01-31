@@ -58,6 +58,47 @@
 
 .sectionFooter{
 	margin-top: 20%;
+	position: fixed;
+  	left: 0;
+  	bottom: 0;
+  	width: 100%;
+	margin-left: 1%;
+	-webkit-text-stroke-width: 2px;
+	-webkit-text-stroke-color: black;
+	font-size: 30px;
+}
+
+.scoreKeeper{
+	font-size: 40px;
+  	font-weight: bold;
+  	padding: 6px;
+}
+
+.sectionFooter button,
+.sectionFooter button::after {
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.sectionFooter button {
+  background: none;
+  border: 0px;
+  color: #0d8f0d;
+  display: inline;
+  font-size: 40px;
+  font-weight: bold;
+  padding: 6px;
+  text-transform: uppercase;
+}
+.sectionFooter button::before,
+.sectionFooter button::after {
+  background: #fff;
+  content: "";
+  z-index: -1;
+}
+.sectionFooter button:hover {
+	color:#ffffff;
 }
 
 .unselectable{
@@ -85,12 +126,6 @@ body {
     -o-background-size: cover;
     background-size: cover;
     margin: 0;
-}
-
-.NextLvl{
-  color: #fffafa;
-}
-
-h5  {
-  color: white;
+	color:#0d8f0d;
+	font-weight: bold;
 }

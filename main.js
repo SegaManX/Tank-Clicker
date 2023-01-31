@@ -161,13 +161,17 @@ function resetGame() {
 };
 
 function help() {
-  confirm("To gain $ click the tank, but to gain passive income you have to buy the buildings on the right side, which can then be improved upon with upgrades that become availabe above the building section after reaching certain milestones.")
+  alert("To gain $ click the tank, but to gain passive income you have to buy the buildings on the right side, which can then be improved upon with upgrades that become availabe above the building section after reaching certain milestones.")
 }
 
 function NextLevel() {
   if (game.score >= game.nextSc && game.lvl <5) {
     game.lvl +=1;
     LoadLvl();
+  } 
+  else
+  {
+    alert("Insufficient $ for Level up!")
   }
 };
 
