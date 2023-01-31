@@ -23,6 +23,7 @@
         <h5>Tank Clicker™</h5>
         <button onclick=" saveGame()">Save Game</button>
         <button onclick="resetGame()">Reset Game</button>
+        <button onclick="help()">Help</button>
       </div>
       <div class="NextLvl">
         <button onclick="NextLevel()">Next Level</button> <span id="scoreBot">0</span> / <span id="nextSc">0</span>
