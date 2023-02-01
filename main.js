@@ -174,7 +174,14 @@ function loadGame() {
 function resetGame() {
   if (confirm("Are you sure about that?")) {
     var gameSave = {};
-    localStorage.setItem("gameSave", JSON.stringify(gameSave));
+    $.ajax({
+      url: 'save.php',
+      data: {myData:gameSave},
+      type: 'POST',
+      success: function(response) {
+        console.log(response);
+      }
+    });
     location.reload();
   }
 };
