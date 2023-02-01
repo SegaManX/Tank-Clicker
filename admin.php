@@ -1,3 +1,16 @@
+<?php
+
+include("config.php");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Username and password from form
+
+  $bonusScore = mysqli_real_escape_string($db, $_POST['bonusScore']);
+  echo "<script>addToScore($bonusScore);<//script>";
+}
+
+?>
+
 <html>
 
 <head>
@@ -28,6 +41,10 @@
     <span id="scoreKeeper">
       <span id="scoreBot">0</span> <span>/</span> <span id="nextSc">0</span>
     </span>
+    <form action="" method="post">
+      <label>Add $: </label><input type="text" name="bonusScore">
+      <input type="submit" value="Add">
+    </form>
   </div>
   <div class="sectionRight">
     <div id="upgradeContainer"></div>

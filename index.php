@@ -12,12 +12,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   $result = $result->fetch_array();
   $admin = intval($result[0]);
 
-  if($admin)
+  if(!$admin)
   {
     $_SESSION['login_user'] = $myusername;
     header("location: game.php");
   }
-  else if(!$admin)
+  else if($admin)
   {
     $_SESSION['login_user'] = $myusername;
     header("location: admin.php");
