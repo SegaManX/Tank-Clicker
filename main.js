@@ -8,8 +8,8 @@ var game = {
   lvl: 1,
 
   addToScore: function(amount) {
-    this.score += amount;
-    this.totalScore += amount;
+    this.score += Number(amount);
+    this.totalScore += Number(amount);
     display.updateScore();
   },
 
@@ -106,7 +106,6 @@ var display = {
 };
 
 
-
 function saveGame() {
   var gameSave = {
     score: game.score,
@@ -173,7 +172,7 @@ function loadGame() {
 
 function resetGame() {
   if (confirm("Are you sure about that?")) {
-    var gameSave = {};
+    var gameSave = "{}";
     $.ajax({
       url: 'save.php',
       data: {myData:gameSave},
@@ -186,14 +185,22 @@ function resetGame() {
   }
 };
 
+
+function addBonusScore(){
+  game.addToScore(document.getElementById('bonusScore').value);
+  saveGame();
+};
+
 function help() {
   alert("To gain $ click the tank, but to gain passive income you have to buy the buildings on the right side, which can then be improved upon with upgrades that become availabe above the building section after reaching certain milestones.")
-}
+};
 
 function NextLevel() {
   if (game.score >= game.nextSc && game.lvl <5) {
+    game.score -= game.nextSc;
     game.lvl +=1;
     LoadLvl();
+    display.updateScore();
   } 
   else if(game.lvl <5)
   {

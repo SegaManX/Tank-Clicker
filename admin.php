@@ -1,22 +1,14 @@
-<?php
-
-include("config.php");
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Username and password from form
-
-  $bonusScore = mysqli_real_escape_string($db, $_POST['bonusScore']);
-  echo "<script>addToScore($bonusScore);<//script>";
-}
-
-?>
-
 <html>
 
 <head>
   <title>0 $ - Tank Clicker</title>
 
   <link rel="stylesheet" href="main.css">
+  <script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+  <script src='main.js'></script>
 </head>
 
 <body>
@@ -41,21 +33,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <span id="scoreKeeper">
       <span id="scoreBot">0</span> <span>/</span> <span id="nextSc">0</span>
     </span>
-    <form action="" method="post">
-      <label>Add $: </label><input type="text" name="bonusScore">
-      <input type="submit" value="Add">
-    </form>
+    <div>
+      <form onsubmit="addBonusScore()">
+       <label>Add $: </label><input type="text" id="bonusScore"  style='font-size: 24px;'>
+      </form>
+    </div>
   </div>
   <div class="sectionRight">
     <div id="upgradeContainer"></div>
     <div id="shopContainer"></div>
   </div>
-  
-
-  <script src="main.js"></script>
 </body>
-<script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+
 </html>
