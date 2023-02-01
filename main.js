@@ -120,13 +120,24 @@ function saveGame() {
     upgradePurchased: upgrade.purchased,
     lvl: game.lvl
   };
-  localStorage.setItem("gameSave", JSON.stringify(gameSave));
+   var saveJSON = JSON.stringify(gameSave);
+   $.ajax({
+    url: 'save.php',
+    data: {myData:saveJSON},
+    type: 'POST',
+    success: function(response) {
+      console.log(response);
+  }
+   });
 };
 
 function loadGame() {
-  var savedGame = JSON.parse(localStorage.getItem("gameSave"));
-  if (localStorage.getItem("gameSave") !== null) {
-    if (typeof savedGame.score !== "undefined") game.score = savedGame.score;
+  $.ajax({
+    url:"load.php",
+    success: function(response){
+      console.log(response);
+      var savedGame = JSON.parse(response);
+      if (typeof savedGame.score !== "undefined") game.score = savedGame.score;
     if (typeof savedGame.totalScore !== "undefined") game.totalScore = savedGame.totalScore;
     if (typeof savedGame.totalClicks !== "undefined") game.totalClicks = savedGame.totalClicks;
     if (typeof savedGame.clickValue !== "undefined") game.clickValue = savedGame.clickValue;
@@ -148,8 +159,16 @@ function loadGame() {
       for (i = 0; i < savedGame.upgradePurchased.length; i++)
         upgrade.purchased[i] = savedGame.upgradePurchased[i];
     }
-  }
+    
   LoadLvl();
+  
+  display.updateUpgrades();
+  display.updateShop();
+    }
+    });
+  
+      
+  
 };
 
 function resetGame() {
@@ -169,9 +188,13 @@ function NextLevel() {
     game.lvl +=1;
     LoadLvl();
   } 
+  else if(game.lvl <5)
+  {
+    alert("Insufficient $ for Level up!");
+  }
   else
   {
-    alert("Insufficient $ for Level up!")
+    alert("Already MAX Level!")
   }
 };
 
@@ -197,8 +220,8 @@ function LoadLvl() {
       break;
     case 5:
       document.body.style.backgroundImage = "url('images/bg4.png')"
-      game.nextSc = 1000000000000000
-      document.getElementById("nextSc").style.display = "none";
+      document.getElementById("scoreKeeper").style.display = "none";
+      document.getElementById("levelButton").style.display = "none";
       document.getElementById("clicker").src = "images/tank4.png";
       break;
     default:
@@ -207,16 +230,17 @@ function LoadLvl() {
   }
 };
 
-document.getElementById("clicker").addEventListener("click", function() {
-  game.totalClicks++;
-  game.addToScore(game.clickValue);
-}, false);
+
 
 window.onload = function() {
   loadGame();
   display.updateScore();
   display.updateUpgrades();
   display.updateShop();
+  document.getElementById("clicker").addEventListener("click", function() {
+    game.totalClicks++;
+    game.addToScore(game.clickValue);
+  }, false);
 };
 
 setInterval(function() {

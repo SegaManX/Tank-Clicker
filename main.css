@@ -61,14 +61,13 @@
 	position: fixed;
   	left: 0;
   	bottom: 0;
-  	width: 100%;
 	margin-left: 1%;
 	-webkit-text-stroke-width: 2px;
 	-webkit-text-stroke-color: black;
 	font-size: 30px;
 }
 
-.scoreKeeper{
+#scoreKeeper{
 	font-size: 40px;
   	font-weight: bold;
   	padding: 6px;
