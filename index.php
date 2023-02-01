@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
   else if(!$admin)
   {
     $_SESSION['login_user'] = $myusername;
-    header("location: copy.php");
+    header("location: admin.php");
   }
   else
   {
