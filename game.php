@@ -28,6 +28,7 @@
     <span id="scoreKeeper">
       <span id="scoreBot">0</span> <span>/</span> <span id="nextSc">0</span>
     </span>
+    <button onclick="window.location.href = 'index.php';">Log out</button>
   </div>
   <div class="sectionRight">
     <div id="upgradeContainer"></div>

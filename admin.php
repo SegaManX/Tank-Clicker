@@ -33,10 +33,18 @@
     <span id="scoreKeeper">
       <span id="scoreBot">0</span> <span>/</span> <span id="nextSc">0</span>
     </span>
-    <div>
+    <button onclick="window.location.href = 'index.php';">Log out</button>
+    <div class="formContainer">
       <form onsubmit="addBonusScore()">
        <label>Add $: </label><input type="text" id="bonusScore"  style='font-size: 24px;'>
       </form>
+    <div class="formContainer">
+      <form action="adminize.php" method="post">
+        <label for="user_name"style='font-size: 24px;'>Username:</label>
+        <input type="text" id="user_name" name="user_name"style='font-size: 24px;'>
+        <input type="submit" value="Adminize"style='font-size: 24px;'>
+      </form>
+    </div>
     </div>
   </div>
   <div class="sectionRight">

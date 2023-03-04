@@ -128,3 +128,11 @@ body {
 	color:#0d8f0d;
 	font-weight: bold;
 }
+
+.formContainer {
+	display: inline-block;
+	vertical-align: top;
+  }
+.formContainer form {
+	display: inline-block;
+}
