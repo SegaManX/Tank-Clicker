@@ -32,6 +32,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
 <html>
   <head>
+    <title>Register - Tank Clicker</title>
+    <link rel="stylesheet" href="main.css">
     <style type = "text/css">
       body {
         font-family:Arial, Helvetica, sans-serif;

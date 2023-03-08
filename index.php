@@ -30,6 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 <html>
   <head>
     <title>Sign In - Tank Clicker</title>
+    <link rel="stylesheet" href="main.css">
     <style type = "text/css">
       body {
         font-family:Arial, Helvetica, sans-serif;
@@ -70,13 +71,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
           <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php if (isset($error)){echo $error;}; ?></div>
           <div>
             <a href="registration.php"><button>Register</button></a>
+            <button id="faqBtn">FAQ</button>
           </div>
         </div>				
       </div>
+    </div>
+    <div id="faqPopup" class="popup" style="display:none">
+      <h2>Frequently Asked Questions</h2>
+      <p>Q: What is Tank Clicker?</p>
+      <p>A: Tank Clicker is a game where you click on tanks to earn $.</p>
+      <p>Q: How do I register?</p>
+      <p>A: Click on the "Register" button on the login page and fill out the form.</p>
     </div>
   </body>
   <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      $("#faqBtn").click(function(){
+        $("#faqPopup").toggle();
+      });
+    });
+  </script>
 </html>

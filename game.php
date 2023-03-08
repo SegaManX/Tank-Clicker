@@ -21,7 +21,7 @@
       <h1>Tank Clicker™</h1>
       <button onclick=" saveGame()">Save Game</button>
       <button onclick="resetGame()">Reset Game</button>
-      <button onclick="help()">Help</button>
+      <button id="helpBtn">Help</button>
       <button id="levelButton" onclick="NextLevel()">Next Level</button> 
       <span id="scoreKeeper">
         <span id="scoreBot">0</span> <span>/</span> <span id="nextSc">0</span>
@@ -33,9 +33,20 @@
       <div id="shopContainer"></div>
     </div>
     <script src="main.js"></script>
+    <div id="helpPopup" class="popup" style="display:none">
+      <h2>Instructions</h2>
+      <p>To gain $ click the tank, but to gain passive income you have to buy the buildings on the right side, which can then be improved upon with upgrades that become availabe above the building section after reaching certain milestones.</p>
+    </div>
   </body>
   <script
     src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+      $("#helpBtn").click(function(){
+        $("#helpPopup").toggle();
+      });
+    });
+  </script>
 </html>
