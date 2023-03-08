@@ -15,7 +15,8 @@ var game = {
 
   getScorePS: function() {
     var scorePS = 0;
-    for (i = 0; i < building.name.length; i++) {
+    for (i = 0; i < building.name.length; i++)
+    {
       scorePS += building.income[i] * building.count[i];
     }
     return scorePS;
@@ -30,7 +31,8 @@ var building = {
   cost: [15, 100, 1000, 42069, 169251, 4792399, 91453467, 551100138, 99999999999],
 
   purchase: function(index) {
-    if (game.score >= this.cost[index]) {
+    if (game.score >= this.cost[index])
+    {
       game.score -= this.cost[index]
       this.count[index]++;
       this.cost[index] = Math.ceil(this.cost[index] * 1.1);
@@ -53,15 +55,19 @@ var upgrade = {
   purchased: [false, false, false, false, false, false, false, false, false, false, false, false],
 
   purchase: function(index) {
-    if (!this.purchased[index] && game.score >= this.cost[index]) {
-      if (this.type[index] == "building" && building.count[this.buildingIndex[index]] >= this.requrement[index]) {
+    if (!this.purchased[index] && game.score >= this.cost[index])
+    {
+      if (this.type[index] == "building" && building.count[this.buildingIndex[index]] >= this.requrement[index])
+      {
         game.score -= this.cost[index];
         building.income[this.buildingIndex[index]] *= this.bonus[index];
         this.purchased[index] = true;
 
         display.updateUpgrades();
         display.updateScore();
-      } else if (this.type[index] == "click" && game.totalClicks >= this.requrement[index]) {
+      }
+      else if (this.type[index] == "click" && game.totalClicks >= this.requrement[index])
+      {
         game.score -= this.cost[index];
         game.clickValue *= this.bonus[index];
         this.purchased[index] = true;
@@ -84,19 +90,24 @@ var display = {
 
   updateShop: function() {
     document.getElementById("shopContainer").innerHTML = "";
-    for (i = 0; i < building.name.length; i++) {
+    for (i = 0; i < building.name.length; i++)
+    {
       document.getElementById("shopContainer").innerHTML += '<table class="shopButton unselectable" onclick="building.purchase(' + i + ')"><tr><td id="image"><img src="images/' + building.image[i] + '"></td><td id="nameAndCost"><p>' + building.name[i] + '</p><p><span>' + building.cost[i] + '</span> $</p></td><td id="amount"><span>' + building.count[i] + '</span></td></tr></table>';
     }
   },
 
   updateUpgrades: function() {
     document.getElementById("upgradeContainer").innerHTML = " ";
-    for (i = 0; i < upgrade.name.length; i++) {
-      if (!upgrade.purchased[i]) {
-        if (upgrade.type[i] == "building" && building.count[upgrade.buildingIndex[i]] >= upgrade.requrement[i]) {
+    for (i = 0; i < upgrade.name.length; i++)
+    {
+      if (!upgrade.purchased[i])
+      {
+        if (upgrade.type[i] == "building" && building.count[upgrade.buildingIndex[i]] >= upgrade.requrement[i])
+        {
           document.getElementById("upgradeContainer").innerHTML += '<img src="images/' + upgrade.image[i] + '" title="' + upgrade.name[i] + ' &#10; ' + upgrade.description[i] + ' &#10; (' + upgrade.cost[i] + ' $)" onclick="upgrade.purchase(' + i + ')">';
         }
-        else if (upgrade.type[i] == "click" && game.totalClicks >= upgrade.requrement[i]) {
+        else if (upgrade.type[i] == "click" && game.totalClicks >= upgrade.requrement[i])
+        {
           document.getElementById("upgradeContainer").innerHTML += '<img src="images/' + upgrade.image[i] + '" title="' + upgrade.name[i] + ' &#10; ' + upgrade.description[i] + ' &#10; (' + upgrade.cost[i] + ' $)" onclick="upgrade.purchase(' + i + ')">';
         }
       }
@@ -126,7 +137,7 @@ function saveGame() {
     type: 'POST',
     success: function(response) {
       console.log(response);
-  }
+    }
    });
 };
 
@@ -137,41 +148,42 @@ function loadGame() {
       console.log(response);
       var savedGame = JSON.parse(response);
       if (typeof savedGame.score !== "undefined") game.score = savedGame.score;
-    if (typeof savedGame.totalScore !== "undefined") game.totalScore = savedGame.totalScore;
-    if (typeof savedGame.totalClicks !== "undefined") game.totalClicks = savedGame.totalClicks;
-    if (typeof savedGame.clickValue !== "undefined") game.clickValue = savedGame.clickValue;
-    if (typeof savedGame.version !== "undefined") game.version = savedGame.version;
-    if (typeof savedGame.lvl !== "undefined") game.lvl = savedGame.lvl;
-    if (typeof savedGame.buildingCount !== "undefined") {
-      for (i = 0; i < savedGame.buildingCount.length; i++)
-        building.count[i] = savedGame.buildingCount[i];
+      if (typeof savedGame.totalScore !== "undefined") game.totalScore = savedGame.totalScore;
+      if (typeof savedGame.totalClicks !== "undefined") game.totalClicks = savedGame.totalClicks;
+      if (typeof savedGame.clickValue !== "undefined") game.clickValue = savedGame.clickValue;
+      if (typeof savedGame.version !== "undefined") game.version = savedGame.version;
+      if (typeof savedGame.lvl !== "undefined") game.lvl = savedGame.lvl;
+      if (typeof savedGame.buildingCount !== "undefined")
+      {
+        for (i = 0; i < savedGame.buildingCount.length; i++)
+          building.count[i] = savedGame.buildingCount[i];
+      }
+      if (typeof savedGame.buildingIncome !== "undefined")
+      {
+        for (i = 0; i < savedGame.buildingIncome.length; i++)
+          building.income[i] = savedGame.buildingIncome[i];
+      }
+      if (typeof savedGame.buildingCost !== "undefined")
+      {
+        for (i = 0; i < savedGame.buildingCost.length; i++)
+          building.cost[i] = savedGame.buildingCost[i];
+      }
+      if (typeof savedGame.upgradePurchased !== "undefined")
+      {
+        for (i = 0; i < savedGame.upgradePurchased.length; i++)
+          upgrade.purchased[i] = savedGame.upgradePurchased[i];
+      }
+
+      LoadLvl();
+      display.updateUpgrades();
+      display.updateShop();
     }
-    if (typeof savedGame.buildingIncome !== "undefined") {
-      for (i = 0; i < savedGame.buildingIncome.length; i++)
-        building.income[i] = savedGame.buildingIncome[i];
-    }
-    if (typeof savedGame.buildingCost !== "undefined") {
-      for (i = 0; i < savedGame.buildingCost.length; i++)
-        building.cost[i] = savedGame.buildingCost[i];
-    }
-    if (typeof savedGame.upgradePurchased !== "undefined") {
-      for (i = 0; i < savedGame.upgradePurchased.length; i++)
-        upgrade.purchased[i] = savedGame.upgradePurchased[i];
-    }
-    
-  LoadLvl();
-  
-  display.updateUpgrades();
-  display.updateShop();
-    }
-    });
-  
-      
-  
+  });
 };
 
 function resetGame() {
-  if (confirm("Are you sure about that?")) {
+  if (confirm("Are you sure about that?"))
+  {
     var gameSave = "{}";
     $.ajax({
       url: 'save.php',
@@ -185,7 +197,6 @@ function resetGame() {
   }
 };
 
-
 function addBonusScore(){
   game.addToScore(document.getElementById('bonusScore').value);
   saveGame();
@@ -196,7 +207,8 @@ function help() {
 };
 
 function NextLevel() {
-  if (game.score >= game.nextSc && game.lvl <5) {
+  if (game.score >= game.nextSc && game.lvl <5)
+  {
     game.score -= game.nextSc;
     game.lvl +=1;
     LoadLvl();
@@ -213,7 +225,8 @@ function NextLevel() {
 };
 
 function LoadLvl() {
-  switch (game.lvl) {
+  switch (game.lvl)
+  {
     case 1:
       document.body.style.backgroundImage = "url('images/bg.png')"
       break;
@@ -273,7 +286,8 @@ setInterval(function() {
 }, 30000);
 
 document.addEventListener("keydown", function(event) {
-  if (event.ctrlKey && event.which == 83) {
+  if (event.ctrlKey && event.which == 83)
+  {
     event.preventDefault();
     saveGame();
   }

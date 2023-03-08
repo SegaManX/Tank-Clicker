@@ -66,13 +66,6 @@
 	-webkit-text-stroke-color: black;
 	font-size: 30px;
 }
-
-#scoreKeeper{
-	font-size: 40px;
-  	font-weight: bold;
-  	padding: 6px;
-}
-
 .sectionFooter button,
 .sectionFooter button::after {
   -webkit-transition: all 0.3s;
@@ -100,6 +93,12 @@
 	color:#ffffff;
 }
 
+#scoreKeeper{
+	font-size: 40px;
+  	font-weight: bold;
+  	padding: 6px;
+}
+
 .unselectable{
 	-webkit-user-select: none;
 	-moz-user-select: none;
@@ -113,6 +112,7 @@ img{
 	-ms-user-select: none;
 	user-select: none;
 }
+
 #upgradeContainer img{
 	height: 64px;
 	width: 64px;
