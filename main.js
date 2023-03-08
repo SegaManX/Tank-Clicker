@@ -206,6 +206,10 @@ function help() {
   alert("To gain $ click the tank, but to gain passive income you have to buy the buildings on the right side, which can then be improved upon with upgrades that become availabe above the building section after reaching certain milestones.")
 };
 
+function aHelp() {
+  alert("To gain $ click the tank, but to gain passive income you have to buy the buildings on the right side, which can then be improved upon with upgrades that become availabe above the building section after reaching certain milestones. You can also add $ using the Add $ field, and you can grant admin privleges to a user by entering their username into the field next to the adminize button")
+};
+
 function NextLevel() {
   if (game.score >= game.nextSc && game.lvl <5)
   {

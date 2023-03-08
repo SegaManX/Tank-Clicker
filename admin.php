@@ -26,7 +26,7 @@
       <h1>Tank Clicker™</h1>
       <button onclick=" saveGame()">Save Game</button>
       <button onclick="resetGame()">Reset Game</button>
-      <button onclick="help()">Help</button>
+      <button onclick="aHelp()">Help</button>
       <button id="levelButton" onclick="NextLevel()">Next Level</button> 
       <span id="scoreKeeper">
         <span id="scoreBot">0</span> <span>/</span> <span id="nextSc">0</span>
